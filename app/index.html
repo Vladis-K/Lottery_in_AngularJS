@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+    <meta name="keywords" content=""/>
+    <meta name="Description" content=""/>
+    <title>Task</title>
+    <link rel="stylesheet" href="./css/normalize.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+    <!-- build:css css/vendor.min.css -->
+    <!-- bower:css -->
+    <link rel="stylesheet" href="bower_components/Materialize/bin/materialize.css" />
+    <!-- endbower -->
+    <!-- endbuild -->
+    <!-- build:css css/main.min.css -->
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/media.css">
+    <!-- endbuild -->
+</head>
+
+ <body ng-controller="mainCtrl">
+
+
+ <form class="form-horizontal">
+
+  <div class="row">
+     <div class="col-sm-offset-6 col-sm-6" >
+         <span>Winners: ... {{winner.name}} {{winner.surname}} ... </span>
+         <div class="btn btn-default" ng-click="randomWinner()">New winner</div>
+     </div>
+     <br>
+ </div>
+
+
+     <div class="form-group">
+         <label for="inputName" class="col-sm-2 control-label">Name</label>
+         <div class="col-sm-6">
+             <input type="text" class="form-control" id="inputName" placeholder="Name" ng-model="name">
+         </div>
+     </div>
+
+     <div class="form-group">
+         <label for="inputSurname" class="col-sm-2 control-label">Surname</label>
+         <div class="col-sm-6">
+             <input type="text" class="form-control" id="inputSurname" placeholder="Surname" ng-model="surname">
+         </div>
+     </div>
+
+
+     <div class="form-group">
+         <label for="inputEmail" class="col-sm-2 control-label">Email</label>
+         <div class="col-sm-6">
+             <input type="email" class="form-control" id="inputEmail" placeholder="Email" ng-model="email">
+         </div>
+     </div>
+
+     <div class="form-group">
+         <label for="inputPhone" class="col-sm-2 control-label">Phone</label>
+         <div class="col-sm-6">
+             <input type="text" class="form-control" id="inputPhone" placeholder="Phone" ng-model="phone">
+         </div>
+     </div>
+
+     <div class="form-group">
+         <div class="col-sm-offset-2 col-sm-10">
+             <button ng-click="editData($index)" class="btn btn-default">Save</button>
+         </div>
+     </div>
+
+
+ </form>
+
+ <div class="container">
+     <div class="col-sm-8">
+         <p>{{description}}</p>
+
+         <table class="table table-bordered">
+             <thead>
+             <tr>
+                 <th ng-click="orderByMe('name')">Name</th>
+                 <th ng-click="orderByMe('surname')">Surname</th>
+                 <th>Email</th>
+                 <th>Phone</th>
+             </tr>
+             </thead>
+
+             <tbody >
+             <tr  ng-click="loadData(x, $index)" ng-repeat="x in names | orderBy:myOrderBy">
+                 <td>{{x.name}}</td>
+                 <td>{{x.surname}}</td>
+                 <td>{{x.email}}</td>
+                 <td>{{x.phone}}</td>
+             </tr>
+             </tbody>
+         </table>
+         <p>All amounts are {{names.length}} participants.</p>
+     </div>
+ </div>
+
+    <!-- build:js js/vendor.min.js -->
+    <!-- bower:js -->
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/Materialize/bin/materialize.js"></script>
+    <!-- endbower -->
+    <!-- endbuild -->
+    <!-- build:js js/main.min.js -->
+  
+    <script src="js/app.js"></script>
+    <script src="js/mainController.js"></script>
+    <!-- endbuild -->
+
+</body>
+
+</html>
